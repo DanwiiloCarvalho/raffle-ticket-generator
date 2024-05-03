@@ -11,9 +11,20 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     body, html {
+        min-height: 100vh;
         max-width: 100vw;
         overflow-x: hidden;
         -webkit-font-smoothing: antialiased;
+
+        > div {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+    }
+
+    input:focus {
+        outline: none;
     }
 
     body, button, textarea, input {
