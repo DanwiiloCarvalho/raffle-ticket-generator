@@ -1,14 +1,9 @@
+import { addTimeToDate } from "../../utils/add-time-to-date";
+import { removeTimeFromDate } from "../../utils/remove-time-from-date";
+import { IFormInput } from "../Form";
 import { TicketContainer, TicketForm, TicketInfo, Unit } from "./styles";
 
-interface TicketProps {
-    title: string;
-    subtitle: string;
-    prize: string;
-    price: number;
-    raffleDate: string;
-    units: number;
-}
-export function Ticket(props: TicketProps) {
+export function Ticket(props: IFormInput) {
     return (
         <TicketContainer>
             <TicketForm>
@@ -22,7 +17,7 @@ export function Ticket(props: TicketProps) {
                 <h2>{props.title}</h2>
                 <h3>{props.subtitle}</h3>
                 <p><strong>Prêmio:</strong> <span>{props.prize}</span></p>
-                <p>Sorteio: {props.raffleDate}</p>
+                <p>Sorteio: {removeTimeFromDate(addTimeToDate(props.raffleDate, "00:00:00"))}</p>
                 <div>
                     <span>Valor: R$ {props.price}</span>
                     <Unit>nº {props.units}</Unit>

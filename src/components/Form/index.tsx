@@ -5,7 +5,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Currency } from "../Currency";
 import { removeTimeFromDate } from "../../utils/remove-time-from-date";
 import { IntegerInput } from "../IntegerInput";
-import { addTimeToDate } from "../../utils/add-time-to-date";
 import { Ticket } from "../Ticket";
 import { useEffect, useRef, useState } from "react";
 
@@ -41,10 +40,10 @@ const formSchema = z.object({
 
 })
 
-type IFormInput = z.infer<typeof formSchema>
+export type IFormInput = z.infer<typeof formSchema>
 
 export function Form() {
-    const [tickets, setTickets] = useState<JSX.Element[]>([])
+    const [tickets, setTickets] = useState<IFormInput[]>([])
     const ticketlist = useRef<HTMLDivElement | null>(null)
 
     const {
@@ -63,16 +62,7 @@ export function Form() {
             setTickets([])
 
             for (let unit = 1; unit <= data.units; unit++) {
-                setTickets(prev => [...prev, <Ticket 
-                    price={data.price}
-                    prize={data.prize}
-                    raffleDate={removeTimeFromDate(addTimeToDate(data.raffleDate, "00:00:00"))}
-                    subtitle={data.subtitle}
-                    title={data.title}
-                    units={unit}
-                    key={unit}
-                />])
-    
+                setTickets(prev => [...prev, { key: unit, ...data, units: unit }])
             }
         } else {
             window.print()
@@ -109,7 +99,7 @@ export function Form() {
             </StyledForm>
             {
                 (tickets.length > 0) && <div ref={ticketlist}>
-                    { tickets.map(ticket => ticket) }
+                    { tickets.map(ticket => <Ticket { ...ticket } />) }
                 </div>
             }
         </>
