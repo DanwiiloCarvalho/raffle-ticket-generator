@@ -1,7 +1,7 @@
 import { StyledMain } from "./styles";
 
 interface ContainerProps {
-    children: React.ReactElement;
+    children: React.ReactElement | React.ReactElement[];
 }
 export function Container({ children }: ContainerProps) {
     return (
