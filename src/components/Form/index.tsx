@@ -57,12 +57,14 @@ export function Form() {
     })
 
     const onSubmit: SubmitHandler<IFormInput> = (data) => {
-        
-        if (tickets.length != data.units) {
+        const ticketValues = JSON.stringify(tickets[tickets.length - 1])
+        const dataValues = JSON.stringify(data)
+
+        if (ticketValues !== dataValues) {
             setTickets([])
 
             for (let unit = 1; unit <= data.units; unit++) {
-                setTickets(prev => [...prev, { key: unit, ...data, units: unit }])
+                setTickets(prev => [...prev, { ...data, units: unit }])
             }
         } else {
             window.print()
@@ -73,7 +75,7 @@ export function Form() {
         if (tickets.length > 0) {
             window.print()
         }
-    }, [tickets.length])
+    }, [tickets])
 
     return (
         <>
@@ -99,7 +101,7 @@ export function Form() {
             </StyledForm>
             {
                 (tickets.length > 0) && <div ref={ticketlist}>
-                    { tickets.map(ticket => <Ticket { ...ticket } />) }
+                    { tickets.map(ticket => <Ticket key={ticket.units} { ...ticket } />) }
                 </div>
             }
         </>
