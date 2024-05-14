@@ -9,5 +9,22 @@ export const StyledMain = styled.main`
     h1 {
         font-size: 1.4rem;
         margin: 1rem 0;
+
+        @media print {
+            display: none;
+        }
     }
+
+    form + div {
+        margin-top: 1rem;
+    }
+
+    @media print {
+        background-color: ${ props => props.theme.white };
+
+        form + div {
+            margin-top: 0;
+        }
+    }
+
 `

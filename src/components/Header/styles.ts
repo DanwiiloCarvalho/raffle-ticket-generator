@@ -22,4 +22,8 @@ export const StyledHeader = styled.header`
         font-weight: 500;
         line-height: 2rem;
     }
+
+    @media print {
+        display: none;
+    }
 `

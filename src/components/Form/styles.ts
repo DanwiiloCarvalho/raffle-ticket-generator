@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const StyledForm = styled.form`
     display: flex;
     flex-direction: column;
-    //gap: 1.8rem;
     justify-content: space-between;
     padding: 1rem;
     background-color: ${ props => props.theme.white };
@@ -48,6 +47,10 @@ export const StyledForm = styled.form`
             border: 1px solid ${ props => props.theme["--success-color"] };
             color: ${ props => props.theme["--success-color"] };
         }
+    }
+
+    @media print {
+        display: none;
     }
 `
 
