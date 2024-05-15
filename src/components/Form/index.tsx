@@ -92,7 +92,7 @@ export function Form() {
                 <DangerMessage>{errors.price?.message}</DangerMessage>
                 <div>
                     <label htmlFor="raffleDate">Data do sorteio:</label>
-                    <input id="raffleDate" type="date" defaultValue={removeTimeFromDate(Date.now())} min={removeTimeFromDate(Date.now())} {...register("raffleDate", { valueAsDate: true })} /* min={new Date().toISOString().split('T')[0]} */ />
+                    <input id="raffleDate" type="date" defaultValue={removeTimeFromDate(Date.now())} min={removeTimeFromDate(Date.now())} {...register("raffleDate", { valueAsDate: true })} />
                 </div>
                 <DangerMessage>{errors.raffleDate?.message}</DangerMessage>
                 <IntegerInput control={control} setFieldValue={setValue} />

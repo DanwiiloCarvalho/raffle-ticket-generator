@@ -22,7 +22,13 @@ export function Ticket(props: IFormInput) {
                 }
                 </p>
                 <div>
-                    <span>Valor: R$ {props.price}</span>
+                    <span>Valor: {
+                        Intl.NumberFormat("pt-BR", {
+                            style: 'currency',
+                            currency: 'BRL'
+                        }).format(props.price)
+                    }
+                    </span>
                     <Unit>nº {props.units}</Unit>
                 </div>
             </TicketInfo>
