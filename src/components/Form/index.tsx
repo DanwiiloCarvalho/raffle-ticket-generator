@@ -20,7 +20,7 @@ const formSchema = z.object({
     }).max(40),
     prize: z.string().min(1, {
         message: "O prêmio é obrigatório"
-    }).max(23),
+    }).max(55, { message: "O prêmio deve conter no máximo 55 caracteres" }),
     price: z.number({
         invalid_type_error: "Valor deve ser um número",
         required_error: "O valor é obrigatório"
