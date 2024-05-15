@@ -15,9 +15,7 @@ const formSchema = z.object({
     }).max(25, {
         message: "O título pode conter no máximo 25 caracteres"
     }).toUpperCase(),
-    subtitle: z.string().min(1, {
-        message: "O subtítulo é obrigatório"
-    }).max(40),
+    subtitle: z.string().max(40, { message: "O subtítulo deve conter no máximo 40 caracteres" }),
     prize: z.string().min(1, {
         message: "O prêmio é obrigatório"
     }).max(55, { message: "O prêmio deve conter no máximo 55 caracteres" }),
@@ -82,7 +80,7 @@ export function Form() {
             <StyledForm onSubmit={handleSubmit(onSubmit)} >
                 <input type="text" placeholder="Título" {...register("title")} aria-label="teste" />
                 <DangerMessage>{errors.title?.message}</DangerMessage>
-                <input type="text" placeholder="Subtítulo" {...register("subtitle")} />
+                <input type="text" placeholder="Subtítulo (Opcional)" {...register("subtitle")} />
                 <DangerMessage>{errors.subtitle?.message}</DangerMessage>
                 <input type="text" placeholder="Prêmio" {...register("prize")} />
                 <DangerMessage>{errors.prize?.message}</DangerMessage>
