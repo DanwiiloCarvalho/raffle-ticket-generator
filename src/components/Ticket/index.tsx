@@ -17,7 +17,10 @@ export function Ticket(props: IFormInput) {
                 <h2>{props.title}</h2>
                 <h3>{props.subtitle}</h3>
                 <p><strong>Prêmio:</strong> <span>{props.prize}</span></p>
-                <p>Sorteio: {removeTimeFromDate(addTimeToDate(props.raffleDate, "00:00:00"))}</p>
+                <p>Sorteio: {
+                    removeTimeFromDate(addTimeToDate(props.raffleDate, "00:00:00")).split("-").reverse().join("/")
+                }
+                </p>
                 <div>
                     <span>Valor: R$ {props.price}</span>
                     <Unit>nº {props.units}</Unit>
