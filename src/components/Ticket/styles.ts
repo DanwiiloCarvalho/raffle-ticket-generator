@@ -6,12 +6,20 @@ export const TicketContainer = styled.article`
     
     height: 45mm;
     width: inherit;
+
+    @media screen and (min-width: 600px) {
+        margin: auto;
+        max-width: 40rem;
+    }
 `
 
 export const Unit = styled.span`
     background-color: ${ props => props.theme["--yellow-ticket-unit"] };
     font-weight: 700;
     padding: 0.1rem 0.3rem;
+
+    display: flex;
+    align-items: center;
 `
 
 export const TicketForm = styled.section`
@@ -75,7 +83,6 @@ export const TicketInfo = styled.section`
     }
 
     p > span {
-        text-transform: uppercase;
         background-color: ${ props => props.theme["--pink-ticket"] };
     }
 
@@ -86,6 +93,7 @@ export const TicketInfo = styled.section`
     div {
         display: flex;
         justify-content: space-between;
+        align-items: center;
 
         span:first-of-type {
             text-transform: uppercase;

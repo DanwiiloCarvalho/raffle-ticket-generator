@@ -27,4 +27,9 @@ export const StyledMain = styled.main`
         }
     }
 
+    @media screen and (min-width: 600px) {
+        h1 {
+            text-align: center;
+        }
+    }
 `

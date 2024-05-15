@@ -52,6 +52,11 @@ export const StyledForm = styled.form`
     @media print {
         display: none;
     }
+
+    @media screen and (min-width: 600px) {
+        margin: auto;
+        max-width: 40rem;
+    }
 `
 
 export const DangerMessage = styled.p`
