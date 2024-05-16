@@ -7,6 +7,7 @@ import { removeTimeFromDate } from "../../utils/remove-time-from-date";
 import { IntegerInput } from "../IntegerInput";
 import { Ticket } from "../Ticket";
 import { useEffect, useRef, useState } from "react";
+import { Bounce } from "../Bounce";
 
  
 const formSchema = z.object({
@@ -42,6 +43,7 @@ export type IFormInput = z.infer<typeof formSchema>
 
 export function Form() {
     const [tickets, setTickets] = useState<IFormInput[]>([])
+    const [isVisibleSpinner, setIsVisibleSpinner] = useState<boolean>(false)
     const ticketlist = useRef<HTMLDivElement | null>(null)
 
     const {
@@ -59,18 +61,21 @@ export function Form() {
         const dataValues = JSON.stringify(data)
 
         if (ticketValues !== dataValues) {
+            setIsVisibleSpinner(true)
             setTickets([])
 
             for (let unit = 1; unit <= data.units; unit++) {
                 setTickets(prev => [...prev, { ...data, units: unit }])
             }
         } else {
+            setIsVisibleSpinner(false)
             window.print()
         }
     };
 
     useEffect(() => {
         if (tickets.length > 0) {
+            setIsVisibleSpinner(false)
             window.print()
         }
     }, [tickets])
@@ -100,7 +105,9 @@ export function Form() {
                 <DangerMessage>{errors.color?.message}</DangerMessage>
                 <IntegerInput control={control} setFieldValue={setValue} />
                 <DangerMessage>{errors.units?.message}</DangerMessage>
-                <button type="submit">Gerar tickets</button>
+                <button type="submit">
+                    {isVisibleSpinner ? <Bounce /> : "Gerar tickets" }
+                </button>
             </StyledForm>
             {
                 (tickets.length > 0) && <div ref={ticketlist}>
