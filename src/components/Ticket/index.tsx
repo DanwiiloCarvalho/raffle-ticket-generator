@@ -13,7 +13,7 @@ export function Ticket(props: IFormInput) {
                 <div><span>Email:</span></div>
                 <div><span>Endereço:</span></div>
             </TicketForm>
-            <TicketInfo>
+            <TicketInfo $variant={props.color}>
                 <h2>{props.title}</h2>
                 <h3>{props.subtitle}</h3>
                 <p><strong>Prêmio:</strong> <span>{props.prize}</span></p>

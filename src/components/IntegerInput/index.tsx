@@ -8,6 +8,7 @@ interface IntegerInputProps {
         prize: string;
         price: number;
         raffleDate: Date;
+        color: string;
         units: number;
     }, any>,
     setFieldValue: UseFormSetValue<{
@@ -16,6 +17,7 @@ interface IntegerInputProps {
         prize: string;
         price: number;
         raffleDate: Date;
+        color: string;
         units: number;
     }>
 };

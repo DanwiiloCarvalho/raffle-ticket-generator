@@ -8,6 +8,7 @@ interface CurrencyProps {
     prize: string;
     price: number;
     raffleDate: Date;
+    color: string,
     units: number;
   }, any>
 };

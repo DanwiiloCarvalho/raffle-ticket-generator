@@ -27,7 +27,7 @@ const formSchema = z.object({
         message:"A data é obrigatória",
         errorMap: (issue, { defaultError }) => ({message: issue.code === "invalid_date" ? "Data inválida!" : defaultError})
     }).min(new Date(removeTimeFromDate(Date.now())), { message: "A Data não pode ser retroativa" }),
-    
+    color: z.string(),
     units: z.number({
         message: "Não é número"
     }).max(1000, {
@@ -86,13 +86,18 @@ export function Form() {
                 <DangerMessage>{errors.prize?.message}</DangerMessage>
 
                 <Currency control={control} />
-
+                
                 <DangerMessage>{errors.price?.message}</DangerMessage>
                 <div>
                     <label htmlFor="raffleDate">Data do sorteio:</label>
                     <input id="raffleDate" type="date" defaultValue={removeTimeFromDate(Date.now())} min={removeTimeFromDate(Date.now())} {...register("raffleDate", { valueAsDate: true })} />
                 </div>
                 <DangerMessage>{errors.raffleDate?.message}</DangerMessage>
+                <div>
+                    <label htmlFor="color">Escolha uma cor:</label>
+                    <input id="color" type="color" {...register("color")} />
+                </div>
+                <DangerMessage>{errors.color?.message}</DangerMessage>
                 <IntegerInput control={control} setFieldValue={setValue} />
                 <DangerMessage>{errors.units?.message}</DangerMessage>
                 <button type="submit">Gerar tickets</button>

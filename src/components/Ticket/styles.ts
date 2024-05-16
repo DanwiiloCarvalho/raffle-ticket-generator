@@ -14,7 +14,7 @@ export const TicketContainer = styled.article`
 `
 
 export const Unit = styled.span`
-    background-color: ${ props => props.theme["--yellow-ticket-unit"] };
+    background-color: #e8e8e8 /* ${ props => props.theme["--yellow-ticket-unit"] } */;
     font-weight: 700;
     padding: 0.1rem 0.3rem;
 
@@ -52,7 +52,7 @@ export const TicketForm = styled.section`
     }
 `
 
-export const TicketInfo = styled.section`
+export const TicketInfo = styled.section<{ $variant: string }>`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -62,7 +62,7 @@ export const TicketInfo = styled.section`
     overflow: hidden;
 
     h2 {
-        background-color: ${ props => props.theme["--pink-ticket"] };
+        background-color: ${ props => props.$variant } /* ${ props => props.theme["--pink-ticket"] } */;
         width: fit-content;
         margin: 0 auto;
         padding: .8rem;
@@ -83,7 +83,7 @@ export const TicketInfo = styled.section`
     }
 
     p > span {
-        background-color: ${ props => props.theme["--pink-ticket"] };
+        background-color: ${ props => props.$variant } /* ${ props => props.theme["--pink-ticket"] } */;
     }
 
     p + p {
