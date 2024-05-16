@@ -35,6 +35,7 @@ export const StyledForm = styled.form`
         cursor: pointer;
         border-radius: 8px;
         transition: background-color 0.4ms;
+        height: 3.3125rem;
 
         &:active {
             background-color: white;
