@@ -16,15 +16,9 @@ export const StyledForm = styled.form`
         font-size: 1.3rem;
     }
 
-    div:first-of-type {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-    }
-
     div {
         display: flex;
-        flex-direction: column;
+        align-items: center;
         gap: 1rem;
 
         label {
