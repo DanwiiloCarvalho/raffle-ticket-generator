@@ -3,11 +3,15 @@ import { removeTimeFromDate } from "../../utils/remove-time-from-date";
 import { IFormInput } from "../Form";
 import { TicketContainer, TicketForm, TicketInfo, Unit } from "./styles";
 
-export function Ticket(props: IFormInput) {
+interface TicketProps extends IFormInput {
+    totalTickets: string
+}
+
+export function Ticket(props: TicketProps) {
     return (
         <TicketContainer>
             <TicketForm>
-                <Unit>nº {props.units}</Unit>
+                <Unit>nº {String(props.units).padStart(props.totalTickets.length, '0')}</Unit>
                 <div><span>Nome:</span></div>
                 <div><span>Telefone:</span></div>
                 <div><span>Email:</span></div>
@@ -29,7 +33,7 @@ export function Ticket(props: IFormInput) {
                         }).format(props.price)
                     }
                     </span>
-                    <Unit>nº {props.units}</Unit>
+                    <Unit>nº {String(props.units).padStart(props.totalTickets.length, '0')}</Unit>
                 </div>
             </TicketInfo>
         </TicketContainer>

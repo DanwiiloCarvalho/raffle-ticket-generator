@@ -111,7 +111,7 @@ export function Form() {
             </StyledForm>
             {
                 (tickets.length > 0) && <div ref={ticketlist}>
-                    { tickets.map(ticket => <Ticket key={ticket.units} { ...ticket } />) }
+                    { tickets.map(ticket => <Ticket key={ticket.units} totalTickets={String(tickets.length)} { ...ticket } />) }
                 </div>
             }
         </>
