@@ -1,0 +1,14 @@
+services:
+  raffle-ticket-generator:
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+
+    container_name: raffle-ticket-generator_app
+    volumes:
+      - ..:/workspaces/raffle-ticket-generation:cached
+    
+    ports:
+      - "5173:5173"
+    # Overrides default command so things don't shut down after the process ends.
+    command: sleep infinity
