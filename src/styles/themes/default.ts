@@ -39,11 +39,4 @@ export const defaultTheme = {
     '--radius-lg': '10px',
     '--shadow-paper': '0 1px 0 rgba(36, 31, 26, 0.04), 0 14px 30px -20px rgba(36, 31, 26, 0.55)',
     '--max-width': '72rem',
-    '--primary-background': '#1976d2',
-    '--secondary-background': '#f5f5f5',
-    '--success-color': '#328a03',
-    '--brand-color': '#000000DE',
-    '--danger-color': '#F72A3C',
-    '--pink-ticket': '#ffcbdb',
-    '--yellow-ticket-unit': '#ffc107',
 } as const
