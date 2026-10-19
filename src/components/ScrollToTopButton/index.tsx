@@ -1,39 +1,37 @@
-import { useEffect, useState } from 'react';
-import { ButtonContainer } from './styles';
-import { ChevronUp } from '../ChevronUp';
+import { useEffect, useState } from 'react'
+import { StyledScrollButton } from './styles'
+import { ChevronUp } from '../ChevronUp'
 
 export function ScrollToTopButton() {
-    const [isVisible, setIsVisible] = useState(false);
+    const [isVisible, setIsVisible] = useState(false)
 
     useEffect(() => {
-
         function toggleVisibility() {
-            if (window.scrollY > window.innerHeight) {
-                setIsVisible(true);
-            } else {
-                setIsVisible(false);
-            }
-        };
+            setIsVisible(window.scrollY > window.innerHeight)
+        }
 
-        window.addEventListener('scroll', toggleVisibility);
+        toggleVisibility()
+        window.addEventListener('scroll', toggleVisibility, { passive: true })
 
-        return () => window.removeEventListener('scroll', toggleVisibility);
-    }, []);
+        return () => window.removeEventListener('scroll', toggleVisibility)
+    }, [])
 
     function scrollToTop() {
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
         window.scrollTo({
             top: 0,
-            behavior: 'smooth'
-        });
-    };
+            behavior: prefersReducedMotion ? 'auto' : 'smooth'
+        })
+    }
+
+    if (!isVisible) {
+        return null
+    }
 
     return (
-        <>
-            {isVisible && (
-                <ButtonContainer onClick={scrollToTop}>
-                    <ChevronUp />
-                </ButtonContainer>
-            )}
-        </>
-    );
+        <StyledScrollButton type="button" onClick={scrollToTop} aria-label="Voltar ao topo">
+            <ChevronUp />
+        </StyledScrollButton>
+    )
 }
