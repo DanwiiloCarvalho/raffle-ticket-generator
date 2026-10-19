@@ -1,12 +1,17 @@
-import { StyledMain } from "./styles";
+import type { ReactNode } from "react"
+import { StyledHeaderBlock, StyledMain, StyledSubtitle, StyledTitle } from "./styles"
 
 interface ContainerProps {
-    children: React.ReactElement | React.ReactElement[];
+    children: ReactNode
 }
+
 export function Container({ children }: ContainerProps) {
     return (
-        <StyledMain>
-            <h1>Faça sua Rifa</h1>
+        <StyledMain id="conteudo">
+            <StyledHeaderBlock>
+                <StyledTitle>Monte o talão da sua rifa</StyledTitle>
+                <StyledSubtitle>Preencha os dados uma vez e imprima quantos bilhetes numerados precisar.</StyledSubtitle>
+            </StyledHeaderBlock>
             {children}
         </StyledMain>
     )
