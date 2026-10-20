@@ -18,7 +18,7 @@ export const StyledTicket = styled.article`
     contain-intrinsic-size: auto 45mm;
 
     @media screen and (min-width: 768px) {
-        max-width: 46rem;
+        min-width: 46rem;
         margin-inline: auto;
     }
 
