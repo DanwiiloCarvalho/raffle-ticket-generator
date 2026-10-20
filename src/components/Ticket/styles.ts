@@ -2,7 +2,9 @@ import styled from "styled-components"
 
 export const StyledTicket = styled.article`
     position: relative;
-    display: block;
+    display: grid;
+    grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+    min-height: 45mm;
     background-color: ${props => props.theme.white};
     color: ${props => props.theme["--ink"]};
     border: 1px solid ${props => props.theme["--line-strong"]};
@@ -24,15 +26,8 @@ export const StyledTicket = styled.article`
         max-width: none;
         margin: 0;
         border-radius: 0;
-        overflow: visible;
         border-color: ${props => props.theme["--line-strong"]};
     }
-`
-
-export const StyledTicketGrid = styled.div`
-    display: grid;
-    grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
-    min-height: 45mm;
 `
 
 export const StyledStub = styled.section`

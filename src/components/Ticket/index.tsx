@@ -11,7 +11,6 @@ import {
     StyledStubTop,
     StyledTicket,
     StyledTicketBody,
-    StyledTicketGrid,
     StyledTicketHeading,
     StyledTicketMeta,
     StyledTicketPrice,
@@ -30,36 +29,34 @@ export function Ticket({ units, totalTickets, title, subtitle, prize, price, raf
 
     return (
         <StyledTicket aria-label={`Ticket número ${serial}`}>
-            <StyledTicketGrid>
-                <StyledStub>
-                    <StyledStubTop>
-                        <StyledSerialLabel>Nº</StyledSerialLabel>
-                        <StyledSerial>{serial}</StyledSerial>
-                    </StyledStubTop>
-                    <StyledStubFields>
-                        <StyledStubField><span>Nome</span></StyledStubField>
-                        <StyledStubField><span>Telefone</span></StyledStubField>
-                        <StyledStubField><span>E-mail</span></StyledStubField>
-                        <StyledStubField><span>Endereço</span></StyledStubField>
-                    </StyledStubFields>
-                </StyledStub>
+            <StyledStub>
+                <StyledStubTop>
+                    <StyledSerialLabel>Nº</StyledSerialLabel>
+                    <StyledSerial>{serial}</StyledSerial>
+                </StyledStubTop>
+                <StyledStubFields>
+                    <StyledStubField><span>Nome</span></StyledStubField>
+                    <StyledStubField><span>Telefone</span></StyledStubField>
+                    <StyledStubField><span>E-mail</span></StyledStubField>
+                    <StyledStubField><span>Endereço</span></StyledStubField>
+                </StyledStubFields>
+            </StyledStub>
 
-                <StyledTicketBody>
-                    <StyledTicketHeading $variant={color} $onColor={onColor}>
-                        <StyledTicketTitle>{title}</StyledTicketTitle>
-                        {subtitle && <StyledTicketSubtitle>{subtitle}</StyledTicketSubtitle>}
-                    </StyledTicketHeading>
-                    <StyledTicketPrize>
-                        <strong>Prêmio</strong>
-                        {prize}
-                    </StyledTicketPrize>
-                    <StyledTicketMeta>
-                        <span>Sorteio em {formatDateBR(raffleDate)}</span>
-                        <StyledTicketPrice>{formatCurrencyBRL(price)}</StyledTicketPrice>
-                    </StyledTicketMeta>
-                    <StyledSerialEcho $variant={color} $onColor={onColor}>nº {serial}</StyledSerialEcho>
-                </StyledTicketBody>
-            </StyledTicketGrid>
+            <StyledTicketBody>
+                <StyledTicketHeading $variant={color} $onColor={onColor}>
+                    <StyledTicketTitle>{title}</StyledTicketTitle>
+                    {subtitle && <StyledTicketSubtitle>{subtitle}</StyledTicketSubtitle>}
+                </StyledTicketHeading>
+                <StyledTicketPrize>
+                    <strong>Prêmio</strong>
+                    {prize}
+                </StyledTicketPrize>
+                <StyledTicketMeta>
+                    <span>Sorteio em {formatDateBR(raffleDate)}</span>
+                    <StyledTicketPrice>{formatCurrencyBRL(price)}</StyledTicketPrice>
+                </StyledTicketMeta>
+                <StyledSerialEcho $variant={color} $onColor={onColor}>nº {serial}</StyledSerialEcho>
+            </StyledTicketBody>
         </StyledTicket>
     )
 }
