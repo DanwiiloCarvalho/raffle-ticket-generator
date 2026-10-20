@@ -108,17 +108,14 @@ export const GlobalStyle = createGlobalStyle`
 
     @media print {
         html,
-        body {
+        body,
+        #root {
             min-height: 0;
-            max-width: none;
-            overflow: visible;
             background: ${props => props.theme.white};
         }
 
         #root {
             display: block;
-            min-height: 0;
-            background: ${props => props.theme.white};
         }
     }
 `
