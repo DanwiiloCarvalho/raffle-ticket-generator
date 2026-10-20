@@ -124,6 +124,7 @@ export const StyledResults = styled.section`
     margin-top: ${props => props.theme["--space-6"]};
 
     @media print {
+        display: block;
         margin: 0;
         gap: 0;
     }
