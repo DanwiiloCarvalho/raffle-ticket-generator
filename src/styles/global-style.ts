@@ -1,6 +1,11 @@
 import { createGlobalStyle } from "styled-components"
 
 export const GlobalStyle = createGlobalStyle`
+    @page {
+        size: A4 portrait;
+        margin: 10mm;
+    }
+
     *,
     *::before,
     *::after {
@@ -107,6 +112,10 @@ export const GlobalStyle = createGlobalStyle`
         #root {
             min-height: 0;
             background: ${props => props.theme.white};
+        }
+
+        #root {
+            display: block;
         }
     }
 `

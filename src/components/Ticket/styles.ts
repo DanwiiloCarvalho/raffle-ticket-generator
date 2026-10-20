@@ -12,10 +12,9 @@ export const StyledTicket = styled.article`
     overflow: hidden;
     break-inside: avoid;
     page-break-inside: avoid;
+    break-after: auto;
     print-color-adjust: exact;
     -webkit-print-color-adjust: exact;
-    content-visibility: auto;
-    contain-intrinsic-size: auto 45mm;
 
     @media screen and (min-width: 768px) {
         min-width: 46rem;
@@ -23,7 +22,6 @@ export const StyledTicket = styled.article`
     }
 
     @media print {
-        content-visibility: visible;
         width: 100%;
         max-width: none;
         margin: 0;

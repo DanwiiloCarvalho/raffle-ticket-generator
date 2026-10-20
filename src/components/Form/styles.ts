@@ -175,6 +175,7 @@ export const StyledTicketList = styled.div`
     gap: ${props => props.theme["--space-2"]};
 
     @media print {
+        display: block;
         gap: 0;
     }
 `
