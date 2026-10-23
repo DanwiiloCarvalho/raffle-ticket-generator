@@ -1,35 +1,42 @@
-import styled from "styled-components";
+import styled from "styled-components"
 
 export const StyledMain = styled.main`
-    background-color: ${ props => props.theme["--secondary-background"] };
-    height: inherit;
-    padding: .5rem;
+    width: 100%;
+    max-width: ${props => props.theme["--max-width"]};
+    margin: 0 auto;
+    padding: ${props => props.theme["--space-5"]} ${props => props.theme["--space-4"]} ${props => props.theme["--space-7"]};
     flex: 1;
 
-    h1 {
-        font-size: 1.4rem;
-        margin: 1rem 0;
-
-        @media print {
-            display: none;
-        }
-    }
-
-    form + div {
-        margin-top: 1rem;
+    @media screen and (min-width: 768px) {
+        padding: ${props => props.theme["--space-6"]} ${props => props.theme["--space-5"]} ${props => props.theme["--space-7"]};
     }
 
     @media print {
-        background-color: ${ props => props.theme.white };
-
-        form + div {
-            margin-top: 0;
-        }
+        max-width: none;
+        padding: 0;
     }
+`
 
-    @media screen and (min-width: 600px) {
-        h1 {
-            text-align: center;
-        }
+export const StyledHeaderBlock = styled.div`
+    display: grid;
+    gap: ${props => props.theme["--space-2"]};
+    max-width: 36rem;
+    margin-bottom: ${props => props.theme["--space-5"]};
+
+    @media print {
+        display: none;
     }
+`
+
+export const StyledTitle = styled.h1`
+    font-size: ${props => props.theme["--fs-3xl"]};
+    font-weight: 700;
+    color: ${props => props.theme["--ink"]};
+`
+
+export const StyledSubtitle = styled.p`
+    max-width: 48ch;
+    font-size: ${props => props.theme["--fs-lg"]};
+    line-height: 1.45;
+    color: ${props => props.theme["--ink-soft"]};
 `

@@ -1,57 +1,38 @@
-import { FormEvent, useEffect, useState } from "react";
-import { Control, Controller, UseFormSetValue } from "react-hook-form";
+import { Control, Controller } from "react-hook-form"
+import type { IFormInput } from "../Form"
+import { StyledIntegerInput } from "./styles"
 
 interface IntegerInputProps {
-    control: Control<{
-        title: string;
-        subtitle: string;
-        prize: string;
-        price: number;
-        raffleDate: Date;
-        color: string;
-        units: number;
-    }, any>,
-    setFieldValue: UseFormSetValue<{
-        title: string;
-        subtitle: string;
-        prize: string;
-        price: number;
-        raffleDate: Date;
-        color: string;
-        units: number;
-    }>
-};
+    control: Control<IFormInput>
+    id: string
+    describedBy?: string
+    invalid?: boolean
+}
 
-
-export function IntegerInput({ control, setFieldValue }: IntegerInputProps) {
-    const [value, setValue] = useState<string>('');
-
-    const handleChange = (event: FormEvent<HTMLInputElement>) => {
-        const value = event.currentTarget.value;
-        // Permite apenas números inteiros
-        const re = /^[0-9\b]+$/;
-        if (value === '' || re.test(value)) {
-            setValue(value);
-        }
-    };
-
-    useEffect(() => {
-        setFieldValue("units", Number(value))
-    }, [value])
-
+export function IntegerInput({ control, id, describedBy, invalid }: IntegerInputProps) {
     return (
         <Controller
             name="units"
             control={control}
             render={({ field }) => (
-                <input
-                    {...field}
-                    type="string"
-                    value={value}
-                    onChange={handleChange}
-                    placeholder="Quantidade de tickets"
+                <StyledIntegerInput
+                    id={id}
+                    name={field.name}
+                    type="text"
+                    inputMode="numeric"
+                    autoComplete="off"
+                    placeholder="Ex.: 100"
+                    value={field.value ?? ""}
+                    aria-describedby={describedBy}
+                    aria-invalid={invalid || undefined}
+                    onBlur={field.onBlur}
+                    onChange={(event) => {
+                        const digits = event.target.value.replace(/\D/g, "").slice(0, 4)
+
+                        field.onChange(digits === "" ? undefined : Number(digits))
+                    }}
                 />
             )}
         />
-    );
+    )
 }
